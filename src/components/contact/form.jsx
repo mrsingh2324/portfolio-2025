@@ -52,6 +52,7 @@ export default function Form() {
           );
         },
         (error) => {
+          console.log(error);
           toast.error(
             "There was an error sending your message, please try again later!",
             {
@@ -71,6 +72,9 @@ export default function Form() {
     };
 
     sendEmail(templateParams);
+    console.log(process.env.NEXT_PUBLIC_SERVICE_ID);
+    console.log(process.env.NEXT_PUBLIC_TEMPLATE_ID);
+    console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY);
   };
 
   return (
@@ -124,8 +128,8 @@ export default function Form() {
               message: "Message should have at most 500 characters!",
             },
             minLength: {
-              value: 50,
-              message: "Message should have atleast 50 characters!",
+              value: 10,
+              message: "Message should have atleast 10 characters!",
             },
           })}
         />
@@ -137,7 +141,7 @@ export default function Form() {
         )}
         <motion.input
           variants={item}
-          value="Cast Your Message"
+          value="Send Your Message"
           type="submit"
           className="px-10 py-4 rounded-md shadow-lg bg-background border-accent/30 border-solid hover:shadow-glass-sm backdrop-blur-sm text-foreground focus:outline-none focus:ring-2 focus:ring-accent/50 cursor-pointer capitalize "
         />
